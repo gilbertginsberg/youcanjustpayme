@@ -11,7 +11,7 @@ export function UpgradeCard({
 }) {
   const { setPlan } = useCreator();
   return (
-    <div className="flex items-start gap-3 rounded-md border border-[var(--accent)]/40 bg-[var(--accent)]/10 p-4">
+    <div className="flex items-start gap-3 rounded-2xl bg-[var(--accent-soft)] p-4">
       <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-[var(--accent)]" />
       <div className="flex-1">
         <p className="text-sm">{message}</p>

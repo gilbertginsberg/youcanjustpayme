@@ -21,7 +21,7 @@ export function DashboardSidebar() {
 
   return (
     <aside className="border-b border-[var(--surface-line)] px-4 py-5 lg:w-60 lg:shrink-0 lg:border-b-0 lg:border-r lg:px-5 lg:py-8">
-      <Link href="/" className="font-display text-base">
+      <Link href="/" className="font-display text-base font-semibold">
         you can just pay me
       </Link>
 
@@ -34,9 +34,9 @@ export function DashboardSidebar() {
               key={item.key}
               href={`/dashboard?tab=${item.key}`}
               className={cn(
-                "flex shrink-0 items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors",
+                "flex shrink-0 items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium transition-colors",
                 active
-                  ? "bg-[var(--surface)] text-[var(--text)]"
+                  ? "bg-[var(--accent)] text-[var(--accent-ink)]"
                   : "text-[var(--text-muted)] hover:bg-[var(--surface)] hover:text-[var(--text)]"
               )}
             >
@@ -47,7 +47,7 @@ export function DashboardSidebar() {
         })}
       </nav>
 
-      <div className="mt-6 flex items-center justify-between rounded-md border border-[var(--surface-line)] bg-[var(--surface)] px-3 py-2 lg:mt-8">
+      <div className="mt-6 flex items-center justify-between rounded-2xl bg-[var(--surface)] px-3 py-2 shadow-[var(--shadow-card)] lg:mt-8">
         <div>
           <p className="text-xs text-[var(--text-muted)]">Plan (demo toggle)</p>
           <p className="text-sm font-medium">{creator.plan === "pro" ? "Pro" : "Free"}</p>

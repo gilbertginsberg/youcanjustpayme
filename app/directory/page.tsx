@@ -14,7 +14,7 @@ export default function DirectoryPage() {
         <Link href="/" className="text-sm text-[var(--text-muted)] hover:text-[var(--text)]">
           ← back
         </Link>
-        <h1 className="font-display mt-4 text-3xl">The directory</h1>
+        <h1 className="font-display mt-4 text-3xl font-semibold">The directory</h1>
         <p className="mt-2 text-[var(--text-muted)]">
           People who already figured out you can just ask to get paid.
         </p>
@@ -24,7 +24,7 @@ export default function DirectoryPage() {
             <Link
               key={creator.handle}
               href={`/${creator.handle}`}
-              className="group flex items-start gap-3 rounded-lg border border-[var(--surface-line)] bg-[var(--surface)] p-4 transition-colors hover:border-[var(--accent)]"
+              className="group flex items-start gap-3 rounded-[var(--radius-card)] bg-[var(--surface)] p-4 shadow-[var(--shadow-card)] transition-all hover:-translate-y-0.5 hover:shadow-[var(--shadow-card-lg)]"
             >
               <Image
                 src={creator.avatarUrl}

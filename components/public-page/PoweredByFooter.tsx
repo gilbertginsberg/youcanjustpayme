@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function PoweredByFooter({ displayName }: { displayName: string }) {
   return (
-    <div className="border-t border-dashed border-[var(--surface-line)] px-5 py-6 text-center">
+    <div className="mt-3 px-5 py-6 text-center">
       {/* Free-plan footer dogfoods the product: it links to ycjpm's own tip page, not just the marketing site. */}
       <Link
         href="/ycjpm"

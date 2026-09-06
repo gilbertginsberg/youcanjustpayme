@@ -16,14 +16,14 @@ export function PublicPage({ creator }: { creator: CreatorPage }) {
     <div
       data-theme={creator.theme.mode}
       style={{ "--accent": creator.theme.accent } as React.CSSProperties}
-      className="mx-auto flex min-h-screen w-full max-w-[440px] flex-col bg-[var(--bg)] text-[var(--text)]"
+      className="mx-auto flex min-h-screen w-full max-w-[440px] flex-col bg-[var(--bg)] px-4 text-[var(--text)] sm:px-5"
     >
       <PageHeader
         avatarUrl={creator.avatarUrl}
         displayName={creator.displayName}
         bio={creator.bio}
       />
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-3">
         {ordered.map((block) => (
           <PaymentBlock key={block.id} block={block} />
         ))}

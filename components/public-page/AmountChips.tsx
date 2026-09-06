@@ -26,14 +26,14 @@ export function AmountChips({
               onSelect(isSelected ? null : amount);
             }}
             className={cn(
-              "rounded-full border px-3 py-1 text-xs font-medium transition-colors",
+              "rounded-[var(--radius-pill)] px-3.5 py-1.5 text-xs font-semibold transition-all",
               featured
                 ? isSelected
-                  ? "border-[var(--accent-ink)] bg-[var(--accent-ink)] text-[var(--accent)]"
-                  : "border-[var(--accent-ink)]/40 text-[var(--accent-ink)] hover:border-[var(--accent-ink)]"
+                  ? "bg-[var(--accent-ink)] text-[var(--accent)]"
+                  : "bg-[var(--accent-ink)]/10 text-[var(--accent-ink)] hover:bg-[var(--accent-ink)]/20"
                 : isSelected
-                ? "border-[var(--accent)] bg-[var(--accent)] text-[var(--accent-ink)]"
-                : "border-[var(--surface-line)] text-[var(--text-muted)] hover:border-[var(--accent)] hover:text-[var(--text)]"
+                ? "bg-[var(--accent)] text-[var(--accent-ink)]"
+                : "bg-[var(--surface-2)] text-[var(--text-muted)] hover:text-[var(--text)]"
             )}
           >
             ${amount}

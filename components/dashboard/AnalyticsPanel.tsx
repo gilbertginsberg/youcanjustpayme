@@ -12,21 +12,21 @@ export function AnalyticsPanel() {
         ].map((stat) => (
           <div
             key={stat.label}
-            className="rounded-md border border-[var(--surface-line)] bg-[var(--surface)] p-4"
+            className="rounded-2xl bg-[var(--surface)] p-4 shadow-[var(--shadow-card)]"
           >
             <p className="text-xs text-[var(--text-muted)]">{stat.label}</p>
-            <p className="font-display mt-1 text-2xl">{stat.value}</p>
+            <p className="font-display mt-1 text-2xl font-semibold">{stat.value}</p>
           </div>
         ))}
       </div>
 
-      <div className="rounded-md border border-[var(--surface-line)] bg-[var(--surface)] p-4">
+      <div className="rounded-[var(--radius-card)] bg-[var(--surface)] p-4 shadow-[var(--shadow-card)]">
         <p className="text-sm text-[var(--text-muted)]">Taps this week</p>
         <div className="mt-4 flex h-32 items-end gap-2">
           {FAKE_DAILY.map((value, i) => (
             <div key={i} className="flex-1">
               <div
-                className="rounded-t-sm bg-[var(--accent)]"
+                className="rounded-t-lg bg-[var(--accent)]"
                 style={{ height: `${(value / MAX) * 100}%` }}
               />
             </div>

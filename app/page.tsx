@@ -10,7 +10,7 @@ const REASONS = [
   },
   {
     title: "One block gets to be the loud one",
-    body: "Feature your favorite way to get paid. Everything else stays quiet, ticket-stub style, underneath it.",
+    body: "Feature your favorite way to get paid. It gets the big bold block up top — everything else stays tidy underneath.",
   },
   {
     title: "You can just say it",
@@ -22,7 +22,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
       <header className="mx-auto flex max-w-5xl items-center justify-between px-6 py-6">
-        <span className="font-display text-lg">you can just pay me</span>
+        <span className="font-display text-lg font-semibold">you can just pay me</span>
         <nav className="flex items-center gap-4 text-sm text-[var(--text-muted)]">
           <Link href="/directory" className="hover:text-[var(--text)]">
             Directory
@@ -34,7 +34,7 @@ export default function LandingPage() {
       </header>
 
       <main className="mx-auto flex max-w-5xl flex-col items-center px-6 pb-24 pt-16 text-center">
-        <h1 className="font-display max-w-2xl text-4xl leading-tight sm:text-5xl">
+        <h1 className="font-display max-w-2xl text-4xl font-semibold leading-tight sm:text-5xl">
           One link. Every way to pay you.
         </h1>
         <p className="mt-5 max-w-lg text-[var(--text-muted)]">
@@ -54,13 +54,13 @@ export default function LandingPage() {
           </Link>
         </div>
 
-        <div className="mt-24 grid w-full gap-6 text-left sm:grid-cols-3">
+        <div className="mt-24 grid w-full gap-5 text-left sm:grid-cols-3">
           {REASONS.map((reason) => (
             <div
               key={reason.title}
-              className="rounded-lg border border-[var(--surface-line)] bg-[var(--surface)] p-5"
+              className="rounded-[var(--radius-card)] bg-[var(--surface)] p-6 shadow-[var(--shadow-card)] transition-transform hover:-translate-y-1"
             >
-              <h3 className="font-display text-lg">{reason.title}</h3>
+              <h3 className="font-display text-lg font-semibold">{reason.title}</h3>
               <p className="mt-2 text-sm text-[var(--text-muted)]">{reason.body}</p>
             </div>
           ))}

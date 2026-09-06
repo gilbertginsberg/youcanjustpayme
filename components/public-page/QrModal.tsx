@@ -61,15 +61,15 @@ export function QrModal({
             <img
               src={qrDataUrl}
               alt="QR code for wallet address"
-              className="h-56 w-56 rounded-md"
+              className="h-56 w-56 rounded-2xl shadow-[var(--shadow-card)]"
             />
           ) : (
-            <div className="h-56 w-56 animate-pulse rounded-md bg-[var(--bg)]" />
+            <div className="h-56 w-56 animate-pulse rounded-2xl bg-[var(--bg)]" />
           )}
           <button
             type="button"
             onClick={handleCopy}
-            className="flex w-full items-center justify-between gap-2 rounded-md border border-[var(--surface-line)] bg-[var(--bg)] px-3 py-2 text-left text-xs text-[var(--text-muted)] transition-colors hover:border-[var(--accent)]"
+            className="flex w-full items-center justify-between gap-2 rounded-2xl bg-[var(--bg)] px-3 py-2.5 text-left text-xs text-[var(--text-muted)] transition-colors hover:text-[var(--text)]"
           >
             <span className="truncate font-mono">{address}</span>
             {copied ? (

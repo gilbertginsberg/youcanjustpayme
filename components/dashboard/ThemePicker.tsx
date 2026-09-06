@@ -129,10 +129,10 @@ function ModeButton({
       type="button"
       onClick={onClick}
       className={cn(
-        "flex items-center gap-2 rounded-md border px-4 py-2 text-sm transition-colors",
+        "flex items-center gap-2 rounded-2xl px-4 py-2 text-sm font-medium transition-colors",
         active
-          ? "border-[var(--accent)] bg-[var(--accent)]/10 text-[var(--text)]"
-          : "border-[var(--surface-line)] text-[var(--text-muted)] hover:text-[var(--text)]",
+          ? "bg-[var(--accent)] text-[var(--accent-ink)]"
+          : "bg-[var(--surface-2)] text-[var(--text-muted)] hover:text-[var(--text)]",
         locked && "opacity-60"
       )}
     >

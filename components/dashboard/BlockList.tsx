@@ -40,7 +40,7 @@ export function BlockList() {
 
   if (blocks.length === 0) {
     return (
-      <div className="rounded-md border border-dashed border-[var(--surface-line)] p-8 text-center text-sm text-[var(--text-muted)]">
+      <div className="rounded-[var(--radius-card)] bg-[var(--surface)] p-8 text-center text-sm text-[var(--text-muted)]">
         No ways to pay you yet. Add one — it&apos;s fine, people want to.
       </div>
     );
@@ -53,7 +53,7 @@ export function BlockList() {
       onDragEnd={handleDragEnd}
     >
       <SortableContext items={blocks.map((b) => b.id)} strategy={verticalListSortingStrategy}>
-        <div className="space-y-2">
+        <div className="space-y-3">
           {blocks.map((block) => (
             <BlockEditor key={block.id} block={block} />
           ))}

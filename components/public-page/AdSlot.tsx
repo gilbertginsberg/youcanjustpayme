@@ -25,10 +25,12 @@ export function AdSlot({ seed = 0 }: { seed?: number }) {
   const sponsor = useMemo(() => SPONSORS[seed % SPONSORS.length], [seed]);
 
   return (
-    <div className="border-t border-dashed border-[var(--surface-line)] px-5 py-5">
-      <p className="mb-2 text-[11px] text-[var(--text-muted)]">Featured tool</p>
-      <div className="rounded-md border border-[var(--surface-line)] p-3">
-        <p className="font-display text-sm">{sponsor.name}</p>
+    <div className="mt-3 rounded-[var(--radius-card)] bg-[var(--surface)] p-4 shadow-[var(--shadow-card)]">
+      <p className="mb-2 text-[11px] uppercase tracking-wide text-[var(--text-muted)]">
+        Featured tool
+      </p>
+      <div className="rounded-2xl bg-[var(--surface-2)] p-3">
+        <p className="font-display text-sm font-semibold">{sponsor.name}</p>
         <p className="mt-1 text-xs text-[var(--text-muted)]">{sponsor.pitch}</p>
       </div>
     </div>

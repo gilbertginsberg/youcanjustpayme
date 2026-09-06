@@ -33,18 +33,18 @@ export function PaymentBlock({ block }: { block: PaymentBlockType }) {
         type="button"
         onClick={handleActivate}
         className={cn(
-          "w-full border-t border-[var(--surface-line)] px-5 py-6 text-left transition-transform first:border-t-0",
+          "w-full rounded-[var(--radius-card)] px-5 py-5 text-left transition-all duration-150 ease-out hover:-translate-y-0.5 active:translate-y-0",
           block.featured
-            ? "bg-[var(--accent)] text-[var(--accent-ink)]"
-            : "bg-transparent text-[var(--text)]",
+            ? "bg-[var(--accent)] text-[var(--accent-ink)] shadow-[var(--shadow-featured)] hover:brightness-[1.03]"
+            : "bg-[var(--surface)] text-[var(--text)] shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-lg)]",
           pressed && "animate-press"
         )}
       >
         <div className="flex items-center gap-3">
           <div
             className={cn(
-              "flex h-10 w-10 shrink-0 items-center justify-center rounded-full",
-              block.featured ? "bg-[var(--accent-ink)]/10" : "bg-[var(--surface)]"
+              "flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl",
+              block.featured ? "bg-[var(--accent-ink)]/12" : "bg-[var(--surface-2)]"
             )}
           >
             {isCrypto ? (
@@ -55,9 +55,16 @@ export function PaymentBlock({ block }: { block: PaymentBlockType }) {
           </div>
           <div className="min-w-0 flex-1">
             <div className="flex items-baseline justify-between gap-2">
-              <span className="font-display text-lg">{block.label}</span>
+              <span
+                className={cn(
+                  "truncate font-display text-lg",
+                  block.featured && "font-semibold"
+                )}
+              >
+                {block.label}
+              </span>
               {block.featured && (
-                <span className="rounded-full bg-[var(--accent-ink)] px-2 py-0.5 text-[10px] font-medium text-[var(--accent)]">
+                <span className="shrink-0 rounded-full bg-[var(--accent-ink)] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[var(--accent)]">
                   featured
                 </span>
               )}

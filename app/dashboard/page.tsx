@@ -77,7 +77,7 @@ function EditorPanel({
 }) {
   return (
     <div className="space-y-6">
-      <div className="space-y-4 rounded-md border border-[var(--surface-line)] bg-[var(--surface)] p-4">
+      <div className="space-y-4 rounded-[var(--radius-card)] bg-[var(--surface)] p-4 shadow-[var(--shadow-card)]">
         <div>
           <p className="mb-1 text-sm text-[var(--text-muted)]">Display name</p>
           <Input
@@ -109,11 +109,11 @@ function EditorPanel({
 function PreviewFrame() {
   const { creator } = useCreator();
   return (
-    <div className="rounded-lg border border-[var(--surface-line)] bg-black/10 p-4">
+    <div className="rounded-[var(--radius-card)] bg-black/10 p-4">
       <p className="mb-3 text-center text-xs text-[var(--text-muted)]">
         Live preview — this is what people see
       </p>
-      <div className="overflow-hidden rounded-md border border-[var(--surface-line)]">
+      <div className="overflow-hidden rounded-2xl">
         <PublicPage creator={creator} />
       </div>
     </div>
@@ -125,8 +125,8 @@ function UpgradePanel() {
   const isPro = creator.plan === "pro";
   return (
     <div className="space-y-4">
-      <div className="rounded-md border border-[var(--surface-line)] bg-[var(--surface)] p-5">
-        <h2 className="font-display text-lg">
+      <div className="rounded-[var(--radius-card)] bg-[var(--surface)] p-5 shadow-[var(--shadow-card)]">
+        <h2 className="font-display text-lg font-semibold">
           {isPro ? "You're on pro" : "Free plan"}
         </h2>
         <p className="mt-2 text-sm text-[var(--text-muted)]">
@@ -137,7 +137,7 @@ function UpgradePanel() {
         <button
           type="button"
           onClick={() => setPlan(isPro ? "free" : "pro")}
-          className="mt-4 rounded-md bg-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--accent-ink)]"
+          className="mt-4 rounded-2xl bg-[var(--accent)] px-4 py-2 text-sm font-semibold text-[var(--accent-ink)] shadow-[var(--shadow-card)] transition-transform hover:-translate-y-0.5"
         >
           {isPro ? "Switch back to free (demo)" : "Upgrade to pro"}
         </button>

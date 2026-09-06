@@ -25,7 +25,7 @@ export function BlockEditor({ block }: { block: PaymentBlock }) {
       ref={setNodeRef}
       style={style}
       className={cn(
-        "flex items-center gap-2 rounded-md border border-[var(--surface-line)] bg-[var(--surface)] p-3",
+        "flex items-center gap-2 rounded-2xl bg-[var(--surface)] p-3 shadow-[var(--shadow-card)]",
         isDragging && "opacity-60"
       )}
     >
