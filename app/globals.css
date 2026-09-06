@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #10231f;
+  --surface: #16302a;
+  --surface-line: rgba(245, 241, 232, 0.14);
+  --text: #f5f1e8;
+  --text-muted: #9fb3ac;
+  --accent: #e8a33d;
+  --accent-ink: #1b140a;
+  --success: #7fa98f;
+}
+
+[data-theme="light"] {
+  --bg: #faf6ee;
+  --surface: #ffffff;
+  --surface-line: rgba(27, 42, 38, 0.12);
+  --text: #1b2a26;
+  --text-muted: #5c6f69;
+  --accent-ink: #1b140a;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-line: var(--surface-line);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-success: var(--success);
+  --font-display: var(--font-fraunces);
+  --font-body: var(--font-plex);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-plex), ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-fraunces), Georgia, serif;
+}
+
+@keyframes press {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.97);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-press {
+  animation: press 220ms ease;
+}

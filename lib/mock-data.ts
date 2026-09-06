@@ -1,0 +1,136 @@
+import type { CreatorPage, DirectoryCreator } from "./types";
+
+export const DEMO_CREATOR: CreatorPage = {
+  handle: "maren-illustrates",
+  displayName: "Maren Ilic",
+  bio: "Illustrator drawing weird little creatures. Comics on the side.",
+  avatarUrl: "https://i.pravatar.cc/150?img=47",
+  theme: {
+    mode: "dark",
+    accent: "#E8A33D",
+  },
+  plan: "free",
+  blocks: [
+    {
+      id: "block-1",
+      platform: "venmo",
+      label: "Venmo",
+      handleOrAddress: "@maren-ilic",
+      note: "Fastest way to reach me",
+      suggestedAmounts: [5, 10, 25],
+      featured: true,
+      order: 0,
+    },
+    {
+      id: "block-2",
+      platform: "cashapp",
+      label: "Cash App",
+      handleOrAddress: "$marenilic",
+      suggestedAmounts: [5, 10, 20],
+      featured: false,
+      order: 1,
+    },
+    {
+      id: "block-3",
+      platform: "kofi",
+      label: "Ko-fi",
+      handleOrAddress: "marenilic",
+      note: "One-off tips, no account needed",
+      featured: false,
+      order: 2,
+    },
+    {
+      id: "block-4",
+      platform: "patreon",
+      label: "Patreon",
+      handleOrAddress: "marenilic",
+      note: "Monthly support + sketch drops",
+      featured: false,
+      order: 3,
+    },
+    {
+      id: "block-5",
+      platform: "crypto",
+      label: "Crypto",
+      handleOrAddress: "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh",
+      featured: false,
+      order: 4,
+    },
+  ],
+};
+
+export const CURATED_ACCENTS_FREE = ["#E8A33D", "#7FA98F", "#C97B63"];
+export const CURATED_ACCENTS_PRO = [
+  "#5B8DEF",
+  "#D65DB1",
+  "#845EC2",
+  "#4FBDBA",
+  "#E15554",
+];
+
+export const DIRECTORY_CREATORS: DirectoryCreator[] = [
+  {
+    handle: "maren-illustrates",
+    displayName: "Maren Ilic",
+    bio: "Illustrator drawing weird little creatures.",
+    avatarUrl: "https://i.pravatar.cc/150?img=47",
+    plan: "free",
+    accent: "#E8A33D",
+  },
+  {
+    handle: "castiron-radio",
+    displayName: "Cast Iron Radio",
+    bio: "Lo-fi songs recorded in a garage, released monthly.",
+    avatarUrl: "https://i.pravatar.cc/150?img=12",
+    plan: "pro",
+    accent: "#5B8DEF",
+  },
+  {
+    handle: "junebug-comics",
+    displayName: "Junebug Comics",
+    bio: "A slice-of-life webcomic about roommates and rent.",
+    avatarUrl: "https://i.pravatar.cc/150?img=32",
+    plan: "free",
+    accent: "#7FA98F",
+  },
+  {
+    handle: "the-noodle-pod",
+    displayName: "The Noodle Pod",
+    bio: "A podcast about noodles. Just noodles.",
+    avatarUrl: "https://i.pravatar.cc/150?img=5",
+    plan: "pro",
+    accent: "#D65DB1",
+  },
+  {
+    handle: "loamlight",
+    displayName: "Loamlight",
+    bio: "Field recordings and ambient loops for sleeping.",
+    avatarUrl: "https://i.pravatar.cc/150?img=68",
+    plan: "free",
+    accent: "#C97B63",
+  },
+  {
+    handle: "pixel-priestess",
+    displayName: "Pixel Priestess",
+    bio: "Pixel art tutorials and the occasional game jam entry.",
+    avatarUrl: "https://i.pravatar.cc/150?img=25",
+    plan: "pro",
+    accent: "#4FBDBA",
+  },
+  {
+    handle: "sourdough-diaries",
+    displayName: "Sourdough Diaries",
+    bio: "One baker, one starter, no signs of stopping.",
+    avatarUrl: "https://i.pravatar.cc/150?img=15",
+    plan: "free",
+    accent: "#E8A33D",
+  },
+  {
+    handle: "night-shift-sessions",
+    displayName: "Night Shift Sessions",
+    bio: "Live-streamed jazz improv, recorded at 2am.",
+    avatarUrl: "https://i.pravatar.cc/150?img=60",
+    plan: "pro",
+    accent: "#845EC2",
+  },
+];
