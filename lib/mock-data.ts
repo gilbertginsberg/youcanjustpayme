@@ -7,7 +7,7 @@ export const DEMO_CREATOR: CreatorPage = {
   avatarUrl: "https://i.pravatar.cc/150?img=47",
   theme: {
     mode: "dark",
-    accent: "#E8A33D",
+    accent: "#3DDC84",
   },
   plan: "free",
   blocks: [
@@ -59,7 +59,7 @@ export const DEMO_CREATOR: CreatorPage = {
   ],
 };
 
-export const CURATED_ACCENTS_FREE = ["#E8A33D", "#7FA98F", "#C97B63"];
+export const CURATED_ACCENTS_FREE = ["#3DDC84", "#E8A33D", "#7FA98F"];
 export const CURATED_ACCENTS_PRO = [
   "#5B8DEF",
   "#D65DB1",
