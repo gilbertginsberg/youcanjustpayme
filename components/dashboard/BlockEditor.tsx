@@ -4,6 +4,7 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { GripVertical, Star, Trash2 } from "lucide-react";
 import { PLATFORMS } from "@/lib/platforms";
+import { PlatformIcon } from "@/lib/platform-icons";
 import type { PaymentBlock } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { useCreator } from "./CreatorProvider";
@@ -13,7 +14,6 @@ export function BlockEditor({ block }: { block: PaymentBlock }) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
     useSortable({ id: block.id });
   const def = PLATFORMS[block.platform];
-  const Icon = def.icon;
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -38,7 +38,7 @@ export function BlockEditor({ block }: { block: PaymentBlock }) {
         <GripVertical className="h-4 w-4" />
       </button>
       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--bg)]">
-        <Icon className="h-4 w-4" />
+        <PlatformIcon id={block.platform} className="h-4 w-4" color={def.brandColor} />
       </div>
       <div className="min-w-0 flex-1">
         <p className="truncate text-sm font-medium">{block.label}</p>

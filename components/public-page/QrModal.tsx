@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import QRCode from "qrcode";
-import { Check, Copy } from "lucide-react";
+import { Check, Copy, ExternalLink } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -14,35 +14,44 @@ import {
 export function QrModal({
   open,
   onOpenChange,
-  address,
+  value,
   label,
+  helperText = "Scan or copy. No link to tap — this doesn't work that way.",
+  linkHref,
+  linkLabel = "Open in app",
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  address: string;
+  /** The address/handle/key to render as a QR code and copy target. */
+  value: string;
   label: string;
+  /** Override the default crypto-flavored copy for other copy-only platforms (Zelle, PIX, etc). */
+  helperText?: string;
+  /** Optional real deep link shown alongside the QR/copy pattern (e.g. UPI). */
+  linkHref?: string;
+  linkLabel?: string;
 }) {
   const [qrDataUrl, setQrDataUrl] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     if (!open) return;
-    QRCode.toDataURL(address, {
+    QRCode.toDataURL(value, {
       margin: 1,
       width: 240,
       color: { dark: "#10231F", light: "#F5F1E8" },
     })
       .then(setQrDataUrl)
       .catch(() => setQrDataUrl(null));
-  }, [open, address]);
+  }, [open, value]);
 
   async function handleCopy() {
     try {
-      await navigator.clipboard.writeText(address);
+      await navigator.clipboard.writeText(value);
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
     } catch {
-      // clipboard unavailable — the address is still visible to copy by hand
+      // clipboard unavailable — the value is still visible to copy by hand
     }
   }
 
@@ -51,16 +60,14 @@ export function QrModal({
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{label}</DialogTitle>
-          <DialogDescription>
-            Scan or copy the address. No link to tap — crypto doesn&apos;t work that way.
-          </DialogDescription>
+          <DialogDescription>{helperText}</DialogDescription>
         </DialogHeader>
         <div className="flex flex-col items-center gap-4">
           {qrDataUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={qrDataUrl}
-              alt="QR code for wallet address"
+              alt={`QR code for ${label}`}
               className="h-56 w-56 rounded-2xl shadow-[var(--shadow-card)]"
             />
           ) : (
@@ -71,13 +78,22 @@ export function QrModal({
             onClick={handleCopy}
             className="flex w-full items-center justify-between gap-2 rounded-2xl bg-[var(--bg)] px-3 py-2.5 text-left text-xs text-[var(--text-muted)] transition-colors hover:text-[var(--text)]"
           >
-            <span className="truncate font-mono">{address}</span>
+            <span className="truncate font-mono">{value}</span>
             {copied ? (
               <Check className="h-4 w-4 shrink-0 text-[var(--success)]" />
             ) : (
               <Copy className="h-4 w-4 shrink-0" />
             )}
           </button>
+          {linkHref && (
+            <a
+              href={linkHref}
+              className="flex w-full items-center justify-center gap-2 rounded-2xl bg-[var(--accent)] px-3 py-2.5 text-sm font-semibold text-[var(--accent-ink)] transition-all hover:brightness-105"
+            >
+              {linkLabel}
+              <ExternalLink className="h-4 w-4" />
+            </a>
+          )}
         </div>
       </DialogContent>
     </Dialog>

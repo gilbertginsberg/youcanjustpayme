@@ -47,18 +47,26 @@ export function BlockList() {
   }
 
   return (
-    <DndContext
-      sensors={sensors}
-      collisionDetection={closestCenter}
-      onDragEnd={handleDragEnd}
-    >
-      <SortableContext items={blocks.map((b) => b.id)} strategy={verticalListSortingStrategy}>
-        <div className="space-y-3">
-          {blocks.map((block) => (
-            <BlockEditor key={block.id} block={block} />
-          ))}
+    <div className="space-y-3">
+      {blocks.length > 5 && (
+        <div className="rounded-2xl bg-[var(--surface-2)] px-4 py-3 text-xs text-[var(--text-muted)]">
+          Most pages convert better with 3-5 clear options — consider featuring your top pick
+          instead of adding more.
         </div>
-      </SortableContext>
-    </DndContext>
+      )}
+      <DndContext
+        sensors={sensors}
+        collisionDetection={closestCenter}
+        onDragEnd={handleDragEnd}
+      >
+        <SortableContext items={blocks.map((b) => b.id)} strategy={verticalListSortingStrategy}>
+          <div className="space-y-3">
+            {blocks.map((block) => (
+              <BlockEditor key={block.id} block={block} />
+            ))}
+          </div>
+        </SortableContext>
+      </DndContext>
+    </div>
   );
 }

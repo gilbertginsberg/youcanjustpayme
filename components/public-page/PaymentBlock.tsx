@@ -4,22 +4,49 @@ import { useState } from "react";
 import { QrCode } from "lucide-react";
 import type { PaymentBlock as PaymentBlockType } from "@/lib/types";
 import { PLATFORMS } from "@/lib/platforms";
+import { PlatformIcon } from "@/lib/platform-icons";
 import { AmountChips } from "./AmountChips";
 import { QrModal } from "./QrModal";
 import { cn } from "@/lib/utils";
+
+/** Copy-block helper text for platforms with no real clickable payment link. */
+function copyHelperText(platformId: string, displayName: string): string {
+  switch (platformId) {
+    case "zelle":
+      return `Search for "${displayName}" in your bank's Zelle — no link to tap.`;
+    case "applepay":
+      return "Ask to send via Apple Pay using this contact — there's no public payment link.";
+    case "googlepay":
+      return "Ask to send via Google Pay using this contact — there's no public payment link.";
+    case "mpesa":
+      return "Send to this number via M-Pesa — no clickable link exists for this one.";
+    case "interac":
+      return "Send an Interac e-Transfer to this email — your bank app handles the rest.";
+    case "pix":
+      return "Scan or copy the PIX key. No universal payment link for PIX yet.";
+    case "alipay":
+    case "wechatpay":
+    case "gcash":
+      return "Scan or copy — this one's QR-code based, no web link.";
+    case "lightning":
+    case "ens":
+    case "crypto":
+    default:
+      return "Scan or copy the address. No link to tap — crypto doesn't work that way.";
+  }
+}
 
 export function PaymentBlock({ block }: { block: PaymentBlockType }) {
   const [amount, setAmount] = useState<number | null>(null);
   const [pressed, setPressed] = useState(false);
   const [qrOpen, setQrOpen] = useState(false);
   const def = PLATFORMS[block.platform];
-  const Icon = def.icon;
-  const isCrypto = block.platform === "crypto";
+  const isLinkable = def.linkable;
 
   function handleActivate() {
     setPressed(true);
     window.setTimeout(() => setPressed(false), 220);
-    if (isCrypto) {
+    if (!isLinkable) {
       setQrOpen(true);
       return;
     }
@@ -47,10 +74,10 @@ export function PaymentBlock({ block }: { block: PaymentBlockType }) {
               block.featured ? "bg-[var(--accent-ink)]/12" : "bg-[var(--surface-2)]"
             )}
           >
-            {isCrypto ? (
-              <QrCode className="h-5 w-5" />
+            {isLinkable ? (
+              <PlatformIcon id={block.platform} className="h-5 w-5" color={def.brandColor} />
             ) : (
-              <Icon className="h-5 w-5" />
+              <QrCode className="h-5 w-5" />
             )}
           </div>
           <div className="min-w-0 flex-1">
@@ -68,6 +95,11 @@ export function PaymentBlock({ block }: { block: PaymentBlockType }) {
                   featured
                 </span>
               )}
+              {!block.featured && !isLinkable && (
+                <span className="shrink-0 rounded-full bg-[var(--surface-2)] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[var(--text-muted)]">
+                  copy info
+                </span>
+              )}
             </div>
             <p
               className={cn(
@@ -79,7 +111,7 @@ export function PaymentBlock({ block }: { block: PaymentBlockType }) {
             </p>
           </div>
         </div>
-        {block.suggestedAmounts && block.suggestedAmounts.length > 0 && !isCrypto && (
+        {block.suggestedAmounts && block.suggestedAmounts.length > 0 && isLinkable && (
           <AmountChips
             amounts={block.suggestedAmounts}
             selected={amount}
@@ -88,12 +120,13 @@ export function PaymentBlock({ block }: { block: PaymentBlockType }) {
           />
         )}
       </button>
-      {isCrypto && (
+      {!isLinkable && (
         <QrModal
           open={qrOpen}
           onOpenChange={setQrOpen}
-          address={block.handleOrAddress}
+          value={block.handleOrAddress}
           label={block.label}
+          helperText={copyHelperText(block.platform, block.label)}
         />
       )}
     </>

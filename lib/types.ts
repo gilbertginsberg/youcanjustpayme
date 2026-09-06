@@ -1,17 +1,53 @@
-export type Platform =
+export type PlatformCategory =
+  | "popular"
+  | "p2p"
+  | "creator"
+  | "crypto"
+  | "business"
+  | "regional"
+  | "wishlist"
+  | "custom";
+
+/** Every supported payment-method id. See lib/platforms.ts for the full registry. */
+export type PlatformId =
   | "venmo"
   | "cashapp"
   | "paypal"
   | "buymeacoffee"
   | "kofi"
-  | "patreon"
-  | "square"
+  | "zelle"
   | "crypto"
-  | "custom";
+  | "custom"
+  | "patreon"
+  | "githubsponsors"
+  | "liberapay"
+  | "opencollective"
+  | "streamlabs"
+  | "streamelements"
+  | "tipeee"
+  | "revolut"
+  | "wise"
+  | "applepay"
+  | "googlepay"
+  | "chime"
+  | "lightning"
+  | "ens"
+  | "square"
+  | "stripe"
+  | "shopify"
+  | "pix"
+  | "upi"
+  | "alipay"
+  | "wechatpay"
+  | "gcash"
+  | "mpesa"
+  | "interac"
+  | "amazonwishlist"
+  | "giftcard";
 
 export type PaymentBlock = {
   id: string;
-  platform: Platform;
+  platform: PlatformId;
   label: string;
   handleOrAddress: string;
   note?: string;
