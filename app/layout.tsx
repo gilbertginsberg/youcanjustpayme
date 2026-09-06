@@ -16,7 +16,7 @@ const plex = IBM_Plex_Sans({
 
 export const metadata: Metadata = {
   title: "You can just pay me",
-  description: "Linktree, but you can just pay me.",
+  description: "The link in your bio, but it's just a way to pay you.",
 };
 
 export default function RootLayout({

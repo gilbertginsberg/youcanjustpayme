@@ -35,7 +35,7 @@ export default function LandingPage() {
 
       <main className="mx-auto flex max-w-5xl flex-col items-center px-6 pb-24 pt-16 text-center">
         <h1 className="font-display max-w-2xl text-4xl leading-tight sm:text-5xl">
-          Linktree, but you can just pay me.
+          One link. Every way to pay you.
         </h1>
         <p className="mt-5 max-w-lg text-[var(--text-muted)]">
           One link for every way someone can send you money. No forms, no
